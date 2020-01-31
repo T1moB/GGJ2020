@@ -1,0 +1,65 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public CharacterController controller;
+
+    public float speed = 12f;
+    public Transform model;
+    public Transform pickupCheck;
+    public float pickupDistance;
+    public LayerMask pickupMask;
+    private void OnDrawGizmos()
+    {
+        if (pickupCheck)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(pickupCheck.position, pickupCheck.position + pickupCheck.forward * pickupDistance);
+        }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        Pickup();
+        Movement();
+    }
+
+    private void Pickup()
+    {
+        //if player presses action button
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //check if object in facing direction, 
+            RaycastHit hit;
+            Physics.Raycast(pickupCheck.position, pickupCheck.forward, out hit, pickupDistance, pickupMask);
+            if (hit.transform)
+            {
+                //then make player parent 
+                hit.transform.parent = transform;
+                //and place infornt
+                hit.transform.position = pickupCheck.position;
+            }
+        }
+    }
+
+    private void Movement()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+        Rotate(move);
+
+        controller.Move(move * speed * Time.deltaTime);
+    }
+
+    private void Rotate(Vector3 move)
+    {
+        //rotate model based on movement direction
+        Vector3 lookDirection = new Vector3(move.x, 0, move.z);
+        if(lookDirection != Vector3.zero)
+        model.rotation = Quaternion.LookRotation(lookDirection);
+    }
+}
