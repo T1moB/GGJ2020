@@ -75,4 +75,12 @@ public class Parts : MonoBehaviour
     {
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Trashcan")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
