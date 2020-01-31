@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3933114573314362096}
   - component: {fileID: 3933114573314362097}
   - component: {fileID: 3933114573314362102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Top-Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,4 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 
   partColor: 
+  randomColor: 
+  partIsFixed: 0
+  partRenderer: {fileID: 0}
   partObject: {fileID: 0}

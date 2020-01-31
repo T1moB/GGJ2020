@@ -8,9 +8,13 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 12f;
     public Transform model;
+
     public Transform pickupCheck;
     public float pickupDistance;
     public LayerMask pickupMask;
+
+    private bool isHolding = false;
+
     private void OnDrawGizmos()
     {
         if (pickupCheck)
@@ -19,6 +23,17 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.DrawLine(pickupCheck.position, pickupCheck.position + pickupCheck.forward * pickupDistance);
         }
     }
+
+    public bool GetHolding()
+    {
+        return isHolding;
+    }
+
+    public void SetHolding(bool value)
+    {
+        isHolding = value;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -28,19 +43,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Pickup()
     {
-        //if player presses action button
-        if (Input.GetKeyDown(KeyCode.Q))
+        //if player presses action button and is not holding shit
+        if (Input.GetKeyDown(KeyCode.Q) && !isHolding)
         {
             //check if object in facing direction, 
             RaycastHit hit;
             Physics.Raycast(pickupCheck.position, pickupCheck.forward, out hit, pickupDistance, pickupMask);
             if (hit.transform)
             {
+                isHolding = true;
                 //then make player parent 
-                hit.transform.parent = transform;
+                hit.transform.parent = model;
                 //and place infornt
                 hit.transform.position = pickupCheck.position;
             }
+            //isholding = false; when dropping the shit
         }
     }
 
@@ -60,6 +77,6 @@ public class PlayerMovement : MonoBehaviour
         //rotate model based on movement direction
         Vector3 lookDirection = new Vector3(move.x, 0, move.z);
         if(lookDirection != Vector3.zero)
-        model.rotation = Quaternion.LookRotation(lookDirection);
+        model.rotation = Quaternion.LookRotation(lookDirection * Time.deltaTime);
     }
 }
