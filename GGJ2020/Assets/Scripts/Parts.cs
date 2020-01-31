@@ -12,6 +12,10 @@ public class Parts : MonoBehaviour
     string[] colors = new string[] { "Red", "Blue", "Yellow" };
     public string randomColor;
 
+    //For testing
+    [SerializeField]
+    bool partIsFixed = false;
+
     //Material partMaterial;
     public Renderer partRenderer;
     public GameObject partObject;
