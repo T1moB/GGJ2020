@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &509410337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509410338}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &509410338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509410337}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.436, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2803923862785663208}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1341896030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1341896031}
+  m_Layer: 0
+  m_Name: Spawnpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1341896031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341896030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.423, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2803923862430590473}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2803923862280196724
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 2803923862280196724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.53416, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 2803923862785663208}
   - {fileID: 2803923862430590473}
@@ -62,9 +122,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2803923862430590472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.97, y: 0, z: -4.95}
-  m_LocalScale: {x: 3.82, y: 0.3, z: 1}
-  m_Children: []
+  m_LocalPosition: {x: 2.736, y: 0, z: -0}
+  m_LocalScale: {x: 4.528, y: 0.3, z: 1}
+  m_Children:
+  - {fileID: 1341896031}
   m_Father: {fileID: 2803923862280196725}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,8 +214,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belt: {fileID: 2803923862430590472}
+  spawnPoint: {fileID: 1341896031}
   endPoint: {fileID: 2803923862435825415}
   speed: 2
+  parts:
+  - {fileID: 7722572276044114429, guid: 1555a8395640f38469ea3c647db85ff4, type: 3}
+  - {fileID: 4838514076658092668, guid: 5b31eb479db16df42a1adb71ca6e15ff, type: 3}
+  - {fileID: 3933114573314362103, guid: 7f3c316f2f635474f872f0c3205a9efd, type: 3}
+  - {fileID: 5901555404079592276, guid: 62167d798b86908489eb84431413d0ee, type: 3}
 --- !u!1 &2803923862435825414
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2803923862435825414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0492599, y: 0.46830004, z: -4.9199996}
+  m_LocalPosition: {x: 0, y: 0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2803923862280196725}
@@ -214,9 +281,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2803923862785663207}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.75, y: 0, z: -4.95}
-  m_LocalScale: {x: 3.82, y: 0.3, z: 1}
-  m_Children: []
+  m_LocalPosition: {x: -2.787, y: 0, z: 0}
+  m_LocalScale: {x: 4.428, y: 0.3, z: 1}
+  m_Children:
+  - {fileID: 509410338}
   m_Father: {fileID: 2803923862280196725}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -305,5 +373,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belt: {fileID: 2803923862785663207}
+  spawnPoint: {fileID: 509410338}
   endPoint: {fileID: 2803923862435825415}
   speed: 2
+  parts:
+  - {fileID: 7722572276044114429, guid: 1555a8395640f38469ea3c647db85ff4, type: 3}
+  - {fileID: 4838514076658092668, guid: 5b31eb479db16df42a1adb71ca6e15ff, type: 3}
+  - {fileID: 3933114573314362103, guid: 7f3c316f2f635474f872f0c3205a9efd, type: 3}
+  - {fileID: 5901555404079592276, guid: 62167d798b86908489eb84431413d0ee, type: 3}

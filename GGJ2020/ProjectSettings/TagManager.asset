@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Walls
   - Main Camera 2
+  - Trashcan
   layers:
   - Default
   - TransparentFX
