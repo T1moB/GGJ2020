@@ -652,11 +652,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 245764249898012623, guid: cab6b2f1af9e5034e83ae41fa74be558,
-        type: 3}
-      propertyPath: pickupDistance
-      value: 1.98
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab6b2f1af9e5034e83ae41fa74be558, type: 3}
 --- !u!1 &1506990410

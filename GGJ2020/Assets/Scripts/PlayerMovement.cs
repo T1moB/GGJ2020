@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -76,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //rotate model based on movement direction
         Vector3 lookDirection = new Vector3(move.x, 0, move.z);
-        if(lookDirection != Vector3.zero)
-        model.rotation = Quaternion.LookRotation(lookDirection * Time.deltaTime);
+        if (lookDirection != Vector3.zero)
+            model.rotation = Quaternion.LookRotation(lookDirection * Time.deltaTime);
     }
 }

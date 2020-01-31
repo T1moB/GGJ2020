@@ -134,7 +134,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245764249898012618}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -176,7 +176,7 @@ MonoBehaviour:
   speed: 12
   model: {fileID: 245764248197519046}
   pickupCheck: {fileID: 245764248655099059}
-  pickupDistance: 1.53
+  pickupDistance: 2
   pickupMask:
     serializedVersion: 2
     m_Bits: 512
