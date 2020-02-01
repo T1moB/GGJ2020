@@ -180,3 +180,4 @@ MonoBehaviour:
   pickupMask:
     serializedVersion: 2
     m_Bits: 512
+  playerOne: 0

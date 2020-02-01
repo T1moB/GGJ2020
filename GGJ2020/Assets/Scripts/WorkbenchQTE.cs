@@ -16,26 +16,13 @@ public class WorkbenchQTE : MonoBehaviour
     private bool broken = false;
     private bool QTEActive = false;
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            //StartQTE();
-        }
-
         if (QTEActive)
         {
-
             arrow.transform.Rotate(0, 0, 300 * Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (arrow.transform.rotation.eulerAngles.y  > circle.transform.rotation.eulerAngles.y - 15 && 
                     arrow.transform.rotation.eulerAngles.y  < circle.transform.rotation.eulerAngles.y + 15)

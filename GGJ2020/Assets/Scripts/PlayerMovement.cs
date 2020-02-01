@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using InControl;
 
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
-
+    public InputDevice Device;
     public float speed = 12f;
     public Transform model;
 
@@ -12,38 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask pickupMask;
 
     private bool isHolding = false;
-    private GameObject holdedItem;
-
-    public bool playerOne;
-    private KeyCode keyboardCode, controllerCode;
-    private string hAxis, vAxis;
-
-    private void OnDrawGizmos()
-    {
-        if (pickupCheck)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(pickupCheck.position, pickupCheck.position + pickupCheck.forward * pickupDistance);
-        }
-    }
-
-    private void Start()
-    {
-        if (playerOne)
-        {
-            keyboardCode = KeyCode.F;
-            controllerCode = KeyCode.Joystick1Button0;
-            hAxis = "Horizontal";
-            vAxis = "Vertical";
-        }
-        else
-        {
-            keyboardCode = KeyCode.L;
-            controllerCode = KeyCode.Joystick2Button0;
-            hAxis = "Horizontal2";
-            vAxis = "Vertical2";
-        }
-    }
+    private GameObject heldItem;
 
     public bool GetHolding()
     {
@@ -65,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private void Pickup()
     {
         //if player presses action button and is not holding shit
-        if ((Input.GetKeyDown(keyboardCode) || Input.GetKeyDown(controllerCode)) && !isHolding)
+        if (Device.Action1 && !isHolding)
         {
             //check if object in facing direction, 
             RaycastHit hit;
@@ -77,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
                 hit.transform.parent = model;
                 //and place infornt
                 hit.transform.position = pickupCheck.position;
-                holdedItem = hit.transform.gameObject;
-                Rigidbody rb = holdedItem.GetComponent<Rigidbody>();
+                heldItem = hit.transform.gameObject;
+                Rigidbody rb = heldItem.GetComponent<Rigidbody>();
                 rb.useGravity = false;
                 rb.constraints = RigidbodyConstraints.FreezePosition;
             }
@@ -88,8 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        float x = Input.GetAxis(hAxis);
-        float z = Input.GetAxis(vAxis);
+        float x = Device.LeftStickX;// Input.GetAxis(hAxis);
+        float z = Device.LeftStickY;//Input.GetAxis(vAxis);
 
         Vector3 move = transform.right * x + transform.forward * z;
         Rotate(move);
@@ -107,12 +77,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.name == "Workbench")
+        if (other.name == "Workbench")
         {
-            if (isHolding && (Input.GetKeyDown(keyboardCode) || Input.GetKeyDown(controllerCode)))
+            if (isHolding && Device.Action1)
             {
                 WorkbenchQTE wQTE = other.gameObject.GetComponent<WorkbenchQTE>();
-                wQTE.SetCurrentGameobject(holdedItem);
+                wQTE.SetCurrentGameobject(heldItem);
                 wQTE.StartQTE();
             }
         }
