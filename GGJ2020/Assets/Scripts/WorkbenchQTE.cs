@@ -43,9 +43,9 @@ public class WorkbenchQTE : MonoBehaviour
                     StartCoroutine(Fix());
                 }
                 currentPlayer.GetComponent<PlayerMovement>().canMove = true;
-                circle.SetActive(false);
                 //arrow.SetActive(false);
                 QTEActive = false;
+                circle.SetActive(false);
             }
         }
     }

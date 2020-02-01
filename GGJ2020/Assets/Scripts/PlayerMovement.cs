@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             model.GetComponent<Animator>().SetBool("Moving", false);
 
         controller.Move(move * speed * Time.deltaTime);
-        controller.Move(new Vector3(0, -gravity, 0) * Time.deltaTime * Time.deltaTime);
+        controller.Move(new Vector3(0, -gravity, 0) * Time.deltaTime);
     }
 
     private void Rotate(Vector3 move)
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
             Pickup(other.gameObject);
         }
 
-        if (other.name == "Workbench")
+        if (other.tag == "Workbench")
         {
             if (isHolding && Device.Action1)
             {
