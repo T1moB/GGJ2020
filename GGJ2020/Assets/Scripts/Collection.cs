@@ -46,7 +46,16 @@ public class Collection : MonoBehaviour
                 }
             }
             itemsCollected++;
-            //collected = true;
+            if(itemsCollected >= 4)
+            {
+                collected = true;
+                request.RequestCompleted();
+                foreach(Parts p in GetComponentsInChildren<Parts>())
+                {
+                    Destroy(p.gameObject);
+                }
+                itemsCollected = 0;
+            }
             return true;
         }
         return false;
