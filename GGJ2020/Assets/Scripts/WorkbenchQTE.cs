@@ -8,6 +8,7 @@ public class WorkbenchQTE : MonoBehaviour
 
     private GameObject currentGameobject;
     private GameObject currentPlayer;
+    private AudioSource mAudio;
 
     [SerializeField] private GameObject circle;
     [SerializeField] private GameObject arrow;
@@ -17,6 +18,11 @@ public class WorkbenchQTE : MonoBehaviour
     private bool broken = false;
     private bool QTEActive = false;
 
+    private void Start()
+    {
+        mAudio = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -25,8 +31,8 @@ public class WorkbenchQTE : MonoBehaviour
             arrow.transform.Rotate(0, 0, 300 * Time.deltaTime);
             if (currentPlayer.GetComponent<PlayerMovement>().Device.Action2)
             {
-                if (arrow.transform.rotation.eulerAngles.y  > circle.transform.rotation.eulerAngles.y - 15 && 
-                    arrow.transform.rotation.eulerAngles.y  < circle.transform.rotation.eulerAngles.y + 15)
+                if (arrow.transform.rotation.eulerAngles.y > circle.transform.rotation.eulerAngles.y - 15 &&
+                    arrow.transform.rotation.eulerAngles.y < circle.transform.rotation.eulerAngles.y + 15)
                 {
                     //succes
                     //currentGameobject.GetComponent<Part>().partIsFixed = true;
@@ -42,6 +48,10 @@ public class WorkbenchQTE : MonoBehaviour
                     StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(false, 1));
                     StartCoroutine(Fix());
                 }
+
+                if (mAudio.isPlaying)
+                    mAudio.Stop();
+
                 currentPlayer.GetComponent<PlayerMovement>().canMove = true;
                 //arrow.SetActive(false);
                 QTEActive = false;
@@ -56,14 +66,18 @@ public class WorkbenchQTE : MonoBehaviour
         circle.SetActive(true);
         //arrow.SetActive(true);
         StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(true));
-        circle.transform.Rotate(0,0,Random.Range(1,359));
-        arrow.transform.rotation = new Quaternion(0,0,0,0);
+
+        if (!mAudio.isPlaying)
+            mAudio.Play();
+
+        circle.transform.Rotate(0, 0, Random.Range(1, 359));
+        arrow.transform.rotation = new Quaternion(0, 0, 0, 0);
 
         QTEActive = true;
 
     }
 
-    private IEnumerator Fix() 
+    private IEnumerator Fix()
     {
         yield return new WaitForSeconds(fixTimer);
         broken = false;
