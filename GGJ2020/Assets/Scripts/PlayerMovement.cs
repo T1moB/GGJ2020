@@ -14,12 +14,34 @@ public class PlayerMovement : MonoBehaviour
     private bool isHolding = false;
     private GameObject holdedItem;
 
+    public bool playerOne;
+    private KeyCode keyboardCode, controllerCode;
+    private string hAxis, vAxis;
+
     private void OnDrawGizmos()
     {
         if (pickupCheck)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(pickupCheck.position, pickupCheck.position + pickupCheck.forward * pickupDistance);
+        }
+    }
+
+    private void Start()
+    {
+        if (playerOne)
+        {
+            keyboardCode = KeyCode.F;
+            controllerCode = KeyCode.Joystick1Button0;
+            hAxis = "Horizontal";
+            vAxis = "Vertical";
+        }
+        else
+        {
+            keyboardCode = KeyCode.L;
+            controllerCode = KeyCode.Joystick2Button0;
+            hAxis = "Horizontal2";
+            vAxis = "Vertical2";
         }
     }
 
@@ -43,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     private void Pickup()
     {
         //if player presses action button and is not holding shit
-        if (Input.GetKeyDown(KeyCode.F) && !isHolding)
+        if ((Input.GetKeyDown(keyboardCode) || Input.GetKeyDown(controllerCode)) && !isHolding)
         {
             //check if object in facing direction, 
             RaycastHit hit;
@@ -66,8 +88,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis(hAxis);
+        float z = Input.GetAxis(vAxis);
 
         Vector3 move = transform.right * x + transform.forward * z;
         Rotate(move);
@@ -87,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.name == "Workbench")
         {
-            if (isHolding && Input.GetKeyDown(KeyCode.F))
+            if (isHolding && (Input.GetKeyDown(keyboardCode) || Input.GetKeyDown(controllerCode)))
             {
                 WorkbenchQTE wQTE = other.gameObject.GetComponent<WorkbenchQTE>();
                 wQTE.SetCurrentGameobject(holdedItem);

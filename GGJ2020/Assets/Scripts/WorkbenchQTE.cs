@@ -35,7 +35,7 @@ public class WorkbenchQTE : MonoBehaviour
         {
 
             arrow.transform.Rotate(0, 0, 300 * Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
             {
                 if (arrow.transform.rotation.eulerAngles.y  > circle.transform.rotation.eulerAngles.y - 15 && 
                     arrow.transform.rotation.eulerAngles.y  < circle.transform.rotation.eulerAngles.y + 15)
