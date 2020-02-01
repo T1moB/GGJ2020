@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 68639c2cbb3dd5648811922aec59f055, type: 2}
+  - {fileID: 2100000, guid: 85abf57a0dddbcf4bbffc54ce2750292, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,8 +90,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.020000001, y: 0.020000001, z: 0.019999998}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.020000044, y: 0.020000001, z: 0.09447087}
+  m_Center: {x: -2.7209309e-17, y: 0.0000000012934072, z: -0.012764569}
 --- !u!1 &8664897425248927032
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e782156c59bb79f41a5b928185fbc918, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
