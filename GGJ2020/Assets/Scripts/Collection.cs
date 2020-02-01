@@ -42,6 +42,7 @@ public class Collection : MonoBehaviour
                 {
                     currentPart.transform.parent = partPositions[i];
                     currentPart.transform.localPosition = Vector3.zero;
+                    currentPart.tag = "Untagged";
                 }
             }
             itemsCollected++;

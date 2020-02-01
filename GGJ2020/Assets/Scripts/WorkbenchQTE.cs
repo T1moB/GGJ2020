@@ -21,6 +21,7 @@ public class WorkbenchQTE : MonoBehaviour
     private void Start()
     {
         mAudio = GetComponent<AudioSource>();
+        mAudio.Stop();
     }
 
     // Update is called once per frame
@@ -88,8 +89,11 @@ public class WorkbenchQTE : MonoBehaviour
 
     public void SetCurrentGameobject(GameObject gb, Transform player)
     {
-        currentGameobject = gb;
-        gb.transform.position = partPos.position;
-        currentPlayer = player.gameObject;
+        if (gb)
+        {
+            currentGameobject = gb;
+            gb.transform.position = partPos.position;
+            currentPlayer = player.gameObject;
+        }
     }
 }

@@ -7,11 +7,12 @@ public class ConveyorBelt : MonoBehaviour
     public Transform spawnPoint;
     public Transform endPoint;
     public float speed;
+    public float time = 3f;
     public GameObject[] parts;
 
     private void Start()
     {
-        InvokeRepeating("Spawn", 0f, 3f);
+        InvokeRepeating("Spawn", 0f, time);
     }
 
     private void OnTriggerStay(Collider other)

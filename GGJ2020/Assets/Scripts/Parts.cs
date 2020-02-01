@@ -2,7 +2,7 @@
 
 public class Parts : MonoBehaviour
 {
-    public GameObject model;
+    //public GameObject model;
     public bool partIsFixed = false;
 
     public Color partColor;
@@ -40,13 +40,21 @@ public class Parts : MonoBehaviour
                 break;
         }
 
-        GetComponent<Renderer>().material.SetColor("_Color", partColor);
+        GetComponentInChildren<Renderer>().material.SetColor("_Color", partColor);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Trashcan")
         {
+            //check for player
+            var parentObject = GetComponentInParent<PlayerMovement>();
+            if (parentObject)
+            {
+                parentObject.heldItem = null;
+                parentObject.isHolding = false;
+            }
+            //kill yourself
             Destroy(gameObject);
         }
     }

@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public float pickupDistance;
     public LayerMask pickupMask;
 
-    private bool isHolding = false;
-    private GameObject heldItem;
+    public bool isHolding = false;
+    public GameObject heldItem;
     private AudioSource mAudio;
 
     public bool GetHolding()
