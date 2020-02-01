@@ -2,82 +2,47 @@
 
 public class Parts : MonoBehaviour
 {
+    public GameObject model;
+    public bool partIsFixed = false;
 
-    //public struct partProperties
-    //{
-    public string partType;
-    public string partColor;
-    string[] colors = new string[] { "Red", "Blue", "Yellow" };
-    public string randomColor;
+    public Color partColor;
+    public partType myPartType;
 
-    //For testing
-    [SerializeField]
-    bool partIsFixed = false;
+    public enum partType
+    {
+        bottom = 0,
+        middle = 1,
+        upper = 2,
+        top = 3
+    };
 
-    //Material partMaterial;
-    public Renderer partRenderer;
-    public GameObject partObject;
-    //}
 
     void Start()
     {
-        partObject = this.gameObject;
-        partObject.name = this.gameObject.name;
-        partRenderer = partObject.GetComponent<Renderer>();
-        randomColor = colors[Random.Range(0, colors.Length)];
+        generatePart();
 
-        switch (partObject.name)
-        {
-            case "Bottom-Part":
-                {
-                    partType = "Bottom";
-                    break;
-                }
-            case "Middle-Part":
-                {
-                    partType = "Middle";
-                    break;
-                }
-            case "Upper-Part":
-                {
-                    partType = "Upper";
-                    break;
-                }
-            case "Top-Part":
-                {
-                    partType = "Top";
-                    break;
-                }
-        }
+    }
+    
+    public void generatePart()
+    {
+        int randomColor = Random.Range(0, 3);
+
         switch (randomColor)
         {
-            case "Red":
-                {
-                    partColor = "Red";
-                    partRenderer.material.SetColor("_Color", Color.red);
-                    break;
-                }
-            case "Blue":
-                {
-                    partColor = "Blue";
-                    partRenderer.material.SetColor("_Color", Color.blue);
-                    break;
-                }
-            case "Yellow":
-                {
-                    partColor = "Yellow";
-                    partRenderer.material.SetColor("_Color", Color.yellow);
-                    break;
-                }
+            case 0:
+                partColor = Color.red;
+                break;
+            case 1:
+                partColor = Color.yellow;
+                break;
+            case 2:
+                partColor = Color.blue;
+                break;
         }
 
+        GetComponent<Renderer>().material.SetColor("_Color", partColor);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Trashcan")
