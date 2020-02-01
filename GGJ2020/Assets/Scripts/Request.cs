@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class Request : MonoBehaviour
 {
-    public string requestPartType;
+    [SerializeField]
+    private string[] requestPartType;   //= [4];
     public string requestPartColor;
     //string[] colors = new string[] { "Red", "Blue", "Yellow" };
     //public string randomColor;
 
     private GameObject[] requestParts;
 
+    [SerializeField]
+    Parts[] parts = new Parts[4];
+
     //Material partMaterial;
     private Renderer requestPartRenderer;
     private GameObject requestPartObject;
 
     private GameObject requestCamera;
+
+    public List<GameObject> childParts;
     //private Parts parts;
     //}
 
@@ -23,49 +29,47 @@ public class Request : MonoBehaviour
     void Start()
     {
         requestCamera = GameObject.Find("RequestCamera");
-        requestPartType = gameObject.GetComponent<Parts>().partType;
-        requestPartColor = gameObject.GetComponent<Parts>().partColor;
+        requestPartType = new string[4];
+        StartCoroutine(DisableRequestCamera());
 
-        for (int i = 0; i < requestParts.Length; i++)
+        //Find child parts of requested object
+        parts = GetComponentsInChildren<Parts>();
+        for (int i = 0; i < parts.Length; i++)
         {
-
+            Debug.Log(parts.Length);
+            Debug.Log(parts[i].partType);
+            requestPartType[i] = parts[i].partType;
         }
-
-       
-   // StartCoroutine(DisableRequestCamera());
-
-
-        //foreach (Transform child in transform)
-        //{
-        //    //child is your child transform
-        //}
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        DisableRequestCamera();
+        IsSetCompleted();
 
     }
-// Update is called once per frame
-////void Update()
-////{
-////        public List<GameObject> Children;
+    private bool IsSetCompleted()
+    {
+        for (int i = 0; i < parts.Length; i++)
+        {
+            if (parts[i].partIsFixed == false)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
-////        foreach (Transform child in transform)
-////         {
-////             if (child.tag == "Tag")
-////             {
-////                 Children.Add(child.gameObject);
-////             }
-////         }
-////    DisableRequestCamera();
-////}
+    void RequestCompleted()
+    {
+        //Reset the requested parts
+    }
 
-void RequestCompleted()
-{
-
-}
-
-private IEnumerator DisableRequestCamera()
-{
-    yield return new WaitForSeconds(0.5f);
-    requestCamera.SetActive(false);
-}
+    private IEnumerator DisableRequestCamera()
+    {
+        yield return new WaitForSeconds(0.5f);
+        requestCamera.SetActive(false);
+    }
 
 
 }

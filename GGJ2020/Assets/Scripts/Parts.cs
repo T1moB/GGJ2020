@@ -10,7 +10,8 @@ public class Parts : MonoBehaviour
     string[] colors = new string[] { "Red", "Blue", "Yellow" };
     public string randomColor;
 
-    public enum whichPartType{
+    public enum whichPartType
+    {
         bottom,
         middle,
         upper,
@@ -20,8 +21,8 @@ public class Parts : MonoBehaviour
     public whichPartType specificPartType;
 
     //For testing
-    [SerializeField]
-    bool partIsFixed = false;
+    //[SerializeField]
+    public bool partIsFixed = false;
 
     //Material partMaterial;
     public Renderer partRenderer;
@@ -30,7 +31,7 @@ public class Parts : MonoBehaviour
 
     void Start()
     {
-        
+
         partObject = this.gameObject;
         partObject.name = this.gameObject.name;
         partRenderer = partObject.GetComponent<Renderer>();
@@ -40,25 +41,25 @@ public class Parts : MonoBehaviour
         //switch (partObject.name)
         {
             case whichPartType.bottom:
-            //case "Bottom-Part(Clone)":
+                //case "Bottom-Part(Clone)":
                 {
                     partType = "Bottom";
                     break;
                 }
             case whichPartType.middle:
-            //case "Middle-Part(Clone)":
+                //case "Middle-Part(Clone)":
                 {
                     partType = "Middle";
                     break;
                 }
             case whichPartType.upper:
-            //case "Upper-Part(Clone)":
+                //case "Upper-Part(Clone)":
                 {
                     partType = "Upper";
                     break;
                 }
             case whichPartType.top:
-           // case "Top-Part(Clone)":
+                // case "Top-Part(Clone)":
                 {
                     partType = "Top";
                     break;
