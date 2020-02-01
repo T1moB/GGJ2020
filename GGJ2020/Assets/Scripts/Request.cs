@@ -11,6 +11,7 @@ public class Request : MonoBehaviour
 
     private GameObject requestCamera;
 
+    private int requestCompleted = 0;
     //Je kan gewoon de parts nemen van de parts script
     void Start()
     {
@@ -20,26 +21,14 @@ public class Request : MonoBehaviour
         //Find child parts of requested object
         requestedParts = GetComponentsInChildren<Parts>();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        IsSetCompleted();
 
-    }
-    private bool IsSetCompleted()
+    public void RequestCompleted()
     {
-        for (int i = 0; i < requestedParts.Length; i++)
+        requestCompleted++;
+        foreach(Parts p in requestedParts)
         {
-            if (requestedParts[i].partIsFixed == false)
-            {
-                return false;
-            }
+            p.generatePart();
         }
-        return true;
-    }
-
-    void RequestCompleted()
-    {
         //Reset the requested parts
     }
 
