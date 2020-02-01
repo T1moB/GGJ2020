@@ -47,6 +47,7 @@ public class WorkbenchQTE : MonoBehaviour
                     mAudio.PlayOneShot(crow_clapping);
 
                     Debug.Log("Fixed");
+                    currentGameobject.GetComponent<Parts>().partIsFixed = true;
                     StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(false));
                 }
                 else
@@ -68,6 +69,7 @@ public class WorkbenchQTE : MonoBehaviour
                 //    mAudio.Stop();
 
                 currentPlayer.GetComponent<PlayerMovement>().canMove = true;
+                currentGameobject = null;
                 //arrow.SetActive(false);
                 QTEActive = false;
                 circle.SetActive(false);
@@ -103,8 +105,11 @@ public class WorkbenchQTE : MonoBehaviour
 
     public void SetCurrentGameobject(GameObject gb, Transform player)
     {
-        currentGameobject = gb;
-        gb.transform.position = partPos.position;
-        currentPlayer = player.gameObject;
+        if (gb)
+        {
+            currentGameobject = gb;
+            gb.transform.position = partPos.position;
+            currentPlayer = player.gameObject;
+        }
     }
 }
