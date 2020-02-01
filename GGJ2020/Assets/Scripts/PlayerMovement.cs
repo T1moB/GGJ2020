@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator WorkAnimation(bool status, int seconds = 0)
     {
         yield return new WaitForSeconds(seconds);
-       model.GetComponent<Animator>().SetBool("Working", status);
+        model.GetComponent<Animator>().SetBool("Working", status);
 
     }
 
@@ -105,6 +105,17 @@ public class PlayerMovement : MonoBehaviour
                 WorkbenchQTE wQTE = other.gameObject.GetComponent<WorkbenchQTE>();
                 wQTE.SetCurrentGameobject(heldItem, transform);
                 wQTE.StartQTE();
+            }
+        }
+
+        if (other.tag == "ShowCase")
+        {
+            if (isHolding && Device.Action1 && other.GetComponent<Parts>().partIsFixed)
+            {
+                if (other.GetComponent<Collection>().CheckCollection(heldItem.GetComponent<Parts>()))
+                {
+                    isHolding = false;
+                }
             }
         }
     }

@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class Collection : MonoBehaviour
 {
-
-    private bool collected = false;
     [SerializeField] private Request request;
-    [SerializeField] private Transform[] partPositions = new Transform[4]; 
-    // Start is called before the first frame update
+    private Transform[] partPositions;
+    private bool collected = false;
+    private int itemsCollected = 0;
+
+    
     void Start()
     {
-        
+        partPositions = GetComponentsInChildren<Transform>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private bool CheckCollection(Parts currentPart)
+    public bool CheckCollection(Parts currentPart)
     {
         if (request.isPartInRequest(currentPart))
         {
@@ -49,6 +44,8 @@ public class Collection : MonoBehaviour
                     currentPart.transform.position = Vector3.zero;
                 }
             }
+            itemsCollected++;
+            collected = true;
             return true;
         }
         return false;

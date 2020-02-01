@@ -40,7 +40,7 @@ public class Parts : MonoBehaviour
                 break;
         }
 
-        GetComponent<Material>().color = partColor;
+        GetComponent<Renderer>().material.SetColor("_Color", partColor);
     }
 
     private void OnTriggerEnter(Collider other)
