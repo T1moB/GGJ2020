@@ -7,7 +7,8 @@ public class WorkbenchQTE : MonoBehaviour
     const int fixTimer = 5;
 
     private GameObject currentGameobject;
-    
+    private GameObject currentPlayer;
+
     [SerializeField] private GameObject circle;
     [SerializeField] private GameObject arrow;
     [SerializeField] private GameObject brokenParticle;
@@ -16,20 +17,9 @@ public class WorkbenchQTE : MonoBehaviour
     private bool broken = false;
     private bool QTEActive = false;
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            //StartQTE();
-        }
 
         if (QTEActive)
         {
@@ -43,15 +33,18 @@ public class WorkbenchQTE : MonoBehaviour
                     //succes
                     //currentGameobject.GetComponent<Part>().partIsFixed = true;
                     Debug.Log("Fixed");
+                    StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(false));
                 }
                 else
                 {
                     broken = true;
                     brokenParticle.SetActive(true);
-                    Debug.Log("You got fucked");
+                    currentPlayer.GetComponent<PlayerMovement>().FailAnimation();
+
+                    StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(false, 1));
                     StartCoroutine(Fix());
                 }
-
+                currentPlayer.GetComponent<PlayerMovement>().canMove = true;
                 circle.SetActive(false);
                 //arrow.SetActive(false);
                 QTEActive = false;
@@ -64,7 +57,7 @@ public class WorkbenchQTE : MonoBehaviour
         if (broken) { return; }
         circle.SetActive(true);
         //arrow.SetActive(true);
-
+        StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(true));
         circle.transform.Rotate(0,0,Random.Range(1,359));
         arrow.transform.rotation = new Quaternion(0,0,0,0);
 
@@ -79,9 +72,10 @@ public class WorkbenchQTE : MonoBehaviour
         brokenParticle.SetActive(false);
     }
 
-    public void SetCurrentGameobject(GameObject gb)
+    public void SetCurrentGameobject(GameObject gb, Transform player)
     {
         currentGameobject = gb;
         gb.transform.position = partPos.position;
+        currentPlayer = player.gameObject;
     }
 }
