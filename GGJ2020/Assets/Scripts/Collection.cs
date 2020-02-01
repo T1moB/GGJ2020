@@ -41,11 +41,11 @@ public class Collection : MonoBehaviour
                 if(partPositions[i].name == partTypePos)
                 {
                     currentPart.transform.parent = partPositions[i];
-                    currentPart.transform.position = Vector3.zero;
+                    currentPart.transform.localPosition = Vector3.zero;
                 }
             }
             itemsCollected++;
-            collected = true;
+            //collected = true;
             return true;
         }
         return false;

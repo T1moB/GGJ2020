@@ -31,6 +31,7 @@ public class WorkbenchQTE : MonoBehaviour
                     //succes
                     //currentGameobject.GetComponent<Part>().partIsFixed = true;
                     Debug.Log("Fixed");
+                    currentGameobject.GetComponent<Parts>().partIsFixed = true;
                     StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(false));
                 }
                 else
@@ -43,6 +44,7 @@ public class WorkbenchQTE : MonoBehaviour
                     StartCoroutine(Fix());
                 }
                 currentPlayer.GetComponent<PlayerMovement>().canMove = true;
+                currentGameobject = null;
                 //arrow.SetActive(false);
                 QTEActive = false;
                 circle.SetActive(false);

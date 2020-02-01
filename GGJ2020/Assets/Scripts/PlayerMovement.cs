@@ -108,15 +108,21 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (other.tag == "ShowCase")
+        if (other.tag == "Showcase")
         {
-            if (isHolding && Device.Action1 && other.GetComponent<Parts>().partIsFixed)
+            if (isHolding && Device.Action1)
             {
-                if (other.GetComponent<Collection>().CheckCollection(heldItem.GetComponent<Parts>()))
+                if (heldItem.GetComponent<Parts>().partIsFixed)
                 {
-                    isHolding = false;
+                    if (other.GetComponent<Collection>().CheckCollection(heldItem.GetComponent<Parts>()))
+                    {
+                        isHolding = false;
+                        heldItem = null;
+                    }
                 }
             }
         }
     }
 }
+
+

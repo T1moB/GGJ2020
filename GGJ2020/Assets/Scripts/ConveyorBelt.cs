@@ -22,6 +22,6 @@ public class ConveyorBelt : MonoBehaviour
     private void Spawn()
     {
         //spawn a random
-        Instantiate(parts[Random.Range(0, parts.Length - 1)], spawnPoint.position, new Quaternion(0, 0, 0, 0));
+        Instantiate(parts[Random.Range(0, parts.Length)], spawnPoint.position, new Quaternion(0, 0, 0, 0));
     }
 }
