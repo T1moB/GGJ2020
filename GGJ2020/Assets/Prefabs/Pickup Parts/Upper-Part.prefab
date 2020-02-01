@@ -106,13 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b9c11a4dea65349aa1e7963782e4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partType: 
-  partColor: 
-  randomColor: 
-  specificPartType: 2
+  model: {fileID: 0}
   partIsFixed: 0
-  partRenderer: {fileID: 0}
-  partObject: {fileID: 0}
+  partColor: {r: 0, g: 0, b: 0, a: 0}
+  myPartType: 2
 --- !u!54 &6784704322786528830
 Rigidbody:
   m_ObjectHideFlags: 0

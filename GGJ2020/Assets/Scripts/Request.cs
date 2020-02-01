@@ -5,54 +5,32 @@ using UnityEngine;
 public class Request : MonoBehaviour
 {
     [SerializeField]
-    private string[] requestPartType;   //= [4];
-    public string requestPartColor;
-    //string[] colors = new string[] { "Red", "Blue", "Yellow" };
-    //public string randomColor;
-
-    private GameObject[] requestParts;
-
-    [SerializeField]
-    Parts[] parts = new Parts[4];
-
-    //Material partMaterial;
-    private Renderer requestPartRenderer;
+    Parts[] requestedParts = new Parts[4];
+    
     private GameObject requestPartObject;
 
     private GameObject requestCamera;
-
-    public List<GameObject> childParts;
-    //private Parts parts;
-    //}
 
     //Je kan gewoon de parts nemen van de parts script
     void Start()
     {
         requestCamera = GameObject.Find("RequestCamera");
-        requestPartType = new string[4];
         StartCoroutine(DisableRequestCamera());
 
         //Find child parts of requested object
-        parts = GetComponentsInChildren<Parts>();
-        for (int i = 0; i < parts.Length; i++)
-        {
-            Debug.Log(parts.Length);
-            Debug.Log(parts[i].partType);
-            requestPartType[i] = parts[i].partType;
-        }
+        requestedParts = GetComponentsInChildren<Parts>();
     }
     // Update is called once per frame
     void Update()
     {
-        DisableRequestCamera();
         IsSetCompleted();
 
     }
     private bool IsSetCompleted()
     {
-        for (int i = 0; i < parts.Length; i++)
+        for (int i = 0; i < requestedParts.Length; i++)
         {
-            if (parts[i].partIsFixed == false)
+            if (requestedParts[i].partIsFixed == false)
             {
                 return false;
             }
@@ -71,5 +49,20 @@ public class Request : MonoBehaviour
         requestCamera.SetActive(false);
     }
 
+    public Parts[] GetRequestedParts()
+    {
+        return requestedParts;
+    }
 
+    public bool isPartInRequest(Parts currentPart) 
+    {
+        foreach(Parts p in requestedParts)
+        {
+            if(currentPart.myPartType == p.myPartType && currentPart.partColor == p.partColor)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
