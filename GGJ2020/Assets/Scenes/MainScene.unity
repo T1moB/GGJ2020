@@ -547,6 +547,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Workbench
       objectReference: {fileID: 0}
+    - target: {fileID: 2160000743283579136, guid: eb04b825f9427b2408f1cc61fbab5eba,
+        type: 3}
+      propertyPath: m_TagString
+      value: Workbench
+      objectReference: {fileID: 0}
     - target: {fileID: 2160000743283579138, guid: eb04b825f9427b2408f1cc61fbab5eba,
         type: 3}
       propertyPath: m_IsTrigger
@@ -843,6 +848,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7511466740382988451, guid: cab6b2f1af9e5034e83ae41fa74be558,
+        type: 3}
+      propertyPath: Priority
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511466740382988451, guid: cab6b2f1af9e5034e83ae41fa74be558,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.39
+      objectReference: {fileID: 0}
     - target: {fileID: 245764249898012616, guid: cab6b2f1af9e5034e83ae41fa74be558,
         type: 3}
       propertyPath: m_LocalPosition.x

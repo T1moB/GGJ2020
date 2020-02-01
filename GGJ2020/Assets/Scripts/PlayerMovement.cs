@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using InControl;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isHolding = false;
     private GameObject heldItem;
+    private AudioSource mAudio;
 
     public bool GetHolding()
     {
@@ -36,8 +38,13 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator WorkAnimation(bool status, int seconds = 0)
     {
         yield return new WaitForSeconds(seconds);
-       model.GetComponent<Animator>().SetBool("Working", status);
+        model.GetComponent<Animator>().SetBool("Working", status);
 
+    }
+
+    private void Start()
+    {
+        mAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -75,9 +82,22 @@ public class PlayerMovement : MonoBehaviour
 
         //set animation
         if (move.x != 0 || move.z != 0)
+        {
             model.GetComponent<Animator>().SetBool("Moving", true);
+            if (!mAudio.isPlaying)
+            {
+                mAudio.Play();
+            }
+        }
         else
+        {
             model.GetComponent<Animator>().SetBool("Moving", false);
+            if (mAudio.isPlaying)
+            {
+                mAudio.Stop();
+            }
+        }
+
 
         controller.Move(move * speed * Time.deltaTime);
         controller.Move(new Vector3(0, -gravity, 0) * Time.deltaTime);
