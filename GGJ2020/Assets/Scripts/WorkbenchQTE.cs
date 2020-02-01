@@ -10,6 +10,11 @@ public class WorkbenchQTE : MonoBehaviour
     private GameObject currentPlayer;
     private AudioSource mAudio;
 
+    public AudioClip smitting;
+    public AudioClip crowd_cheer;
+    public AudioClip crowd_laugh;
+    public AudioClip crow_clapping;
+
     [SerializeField] private GameObject circle;
     [SerializeField] private GameObject arrow;
     [SerializeField] private GameObject brokenParticle;
@@ -37,13 +42,22 @@ public class WorkbenchQTE : MonoBehaviour
                 {
                     //succes
                     //currentGameobject.GetComponent<Part>().partIsFixed = true;
+
+                    mAudio.Stop();
+                    mAudio.PlayOneShot(crow_clapping);
+
                     Debug.Log("Fixed");
                     currentGameobject.GetComponent<Parts>().partIsFixed = true;
                     StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(false));
                 }
                 else
                 {
+                    //fialuer
                     broken = true;
+
+                    mAudio.Stop();
+                    mAudio.PlayOneShot(crowd_laugh);
+
                     brokenParticle.SetActive(true);
                     currentPlayer.GetComponent<PlayerMovement>().FailAnimation();
 
@@ -51,8 +65,8 @@ public class WorkbenchQTE : MonoBehaviour
                     StartCoroutine(Fix());
                 }
 
-                if (mAudio.isPlaying)
-                    mAudio.Stop();
+                //if (mAudio.isPlaying)
+                //    mAudio.Stop();
 
                 currentPlayer.GetComponent<PlayerMovement>().canMove = true;
                 currentGameobject = null;
@@ -65,13 +79,15 @@ public class WorkbenchQTE : MonoBehaviour
 
     public void StartQTE()
     {
-        if (broken) { return; }
         circle.SetActive(true);
         //arrow.SetActive(true);
         StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(true));
 
         if (!mAudio.isPlaying)
+        {
+            mAudio.clip = smitting;
             mAudio.Play();
+        }
 
         circle.transform.Rotate(0, 0, Random.Range(1, 359));
         arrow.transform.rotation = new Quaternion(0, 0, 0, 0);

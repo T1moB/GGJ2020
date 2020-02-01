@@ -4979,7 +4979,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2160000743283579136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 11.5, y: 1.5, z: -7.4754763}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 6378058002214501505}
@@ -5016,6 +5016,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522ecb3f01afd8242b704f4a92f6511d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smitting: {fileID: 8300000, guid: c8742f314fc9f2b4db992379b5c00835, type: 3}
+  crowd_cheer: {fileID: 8300000, guid: 2f00da1fbdb4cfd43b8ef7dcfcd76562, type: 3}
+  crowd_laugh: {fileID: 8300000, guid: b13fd2c67dfdcf341b35147ea0f41e81, type: 3}
+  crow_clapping: {fileID: 8300000, guid: d16347064b68e084c996e5e3d153e7b9, type: 3}
   circle: {fileID: 2160000743772802807}
   arrow: {fileID: 2160000742760904742}
   brokenParticle: {fileID: 1121191152435765}

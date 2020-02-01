@@ -216,7 +216,8 @@ MonoBehaviour:
   belt: {fileID: 2803923862430590472}
   spawnPoint: {fileID: 1341896031}
   endPoint: {fileID: 2803923862435825415}
-  speed: 2
+  speed: 4
+  time: 1.5
   parts:
   - {fileID: 2482078030437599739, guid: 1555a8395640f38469ea3c647db85ff4, type: 3}
   - {fileID: 5232119989765666629, guid: 5b31eb479db16df42a1adb71ca6e15ff, type: 3}
@@ -375,7 +376,8 @@ MonoBehaviour:
   belt: {fileID: 2803923862785663207}
   spawnPoint: {fileID: 509410338}
   endPoint: {fileID: 2803923862435825415}
-  speed: 2
+  speed: 4
+  time: 1.5
   parts:
   - {fileID: 2482078030437599739, guid: 1555a8395640f38469ea3c647db85ff4, type: 3}
   - {fileID: 5232119989765666629, guid: 5b31eb479db16df42a1adb71ca6e15ff, type: 3}
