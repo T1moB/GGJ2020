@@ -185,6 +185,8 @@ MonoBehaviour:
   pickupMask:
     serializedVersion: 2
     m_Bits: 512
+  isHolding: 0
+  heldItem: {fileID: 0}
 --- !u!135 &994195452
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -196,7 +198,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0.85}
 --- !u!82 &-7511466740382988451
 AudioSource:

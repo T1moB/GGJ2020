@@ -122,21 +122,20 @@
 			player.Device = null;
 			Destroy( player.gameObject );
 		}
+        
+		//void OnGUI()
+		//{
+		//	const float h = 22.0f;
+		//	var y = 10.0f;
 
+		//	GUI.Label( new Rect( 10, y, 300, y + h ), "Active players: " + players.Count + "/" + maxPlayers );
+		//	y += h;
 
-		void OnGUI()
-		{
-			const float h = 22.0f;
-			var y = 10.0f;
-
-			GUI.Label( new Rect( 10, y, 300, y + h ), "Active players: " + players.Count + "/" + maxPlayers );
-			y += h;
-
-			if (players.Count < maxPlayers)
-			{
-				GUI.Label( new Rect( 10, y, 300, y + h ), "Press a button to join!" );
-				y += h;
-			}
-		}
+		//	if (players.Count < maxPlayers)
+		//	{
+		//		GUI.Label( new Rect( 10, y, 300, y + h ), "Press a button to join!" );
+		//		y += h;
+		//	}
+		//}
 	}
 }

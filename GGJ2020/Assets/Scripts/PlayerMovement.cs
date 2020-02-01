@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public float pickupDistance;
     public LayerMask pickupMask;
 
-    private bool isHolding = false;
-    private GameObject heldItem;
+    public bool isHolding = false;
+    public GameObject heldItem;
     private AudioSource mAudio;
 
     public bool GetHolding()
@@ -127,5 +127,22 @@ public class PlayerMovement : MonoBehaviour
                 wQTE.StartQTE();
             }
         }
+
+        if (other.tag == "Showcase")
+        {
+            if (isHolding && Device.Action1)
+            {
+                if (heldItem.GetComponent<Parts>().partIsFixed)
+                {
+                    if (other.GetComponent<Collection>().CheckCollection(heldItem.GetComponent<Parts>()))
+                    {
+                        isHolding = false;
+                        heldItem = null;
+                    }
+                }
+            }
+        }
     }
 }
+
+

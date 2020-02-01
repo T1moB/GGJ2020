@@ -7,11 +7,12 @@ public class ConveyorBelt : MonoBehaviour
     public Transform spawnPoint;
     public Transform endPoint;
     public float speed;
+    public float time = 3f;
     public GameObject[] parts;
 
     private void Start()
     {
-        InvokeRepeating("Spawn", 0f, 3f);
+        InvokeRepeating("Spawn", 0f, time);
     }
 
     private void OnTriggerStay(Collider other)
@@ -22,6 +23,6 @@ public class ConveyorBelt : MonoBehaviour
     private void Spawn()
     {
         //spawn a random
-        Instantiate(parts[Random.Range(0, parts.Length - 1)], spawnPoint.position, new Quaternion(0, 0, 0, 0));
+        Instantiate(parts[Random.Range(0, parts.Length)], spawnPoint.position, new Quaternion(0, 0, 0, 0));
     }
 }
