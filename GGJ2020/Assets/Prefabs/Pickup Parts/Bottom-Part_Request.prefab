@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4838514076658092668
+--- !u!1 &3570587728079380243
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4838514076658092657}
-  - component: {fileID: 4838514076658092656}
-  - component: {fileID: 4838514076658092671}
-  - component: {fileID: 4838514076658092670}
-  - component: {fileID: 4838514076658092669}
-  - component: {fileID: 62701530427167013}
+  - component: {fileID: 3570587728079380246}
+  - component: {fileID: 3570587728079380247}
+  - component: {fileID: 3570587728079380240}
+  - component: {fileID: 3570587728079380241}
+  - component: {fileID: 3570587728079380242}
+  - component: {fileID: 1991109559920890755}
   m_Layer: 9
-  m_Name: Middle-Part
+  m_Name: Bottom-Part_Request
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4838514076658092657
+--- !u!4 &3570587728079380246
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4838514076658092668}
+  m_GameObject: {fileID: 3570587728079380243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.64, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.312, z: 0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4838514076658092656
+--- !u!33 &3570587728079380247
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4838514076658092668}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4838514076658092671
+  m_GameObject: {fileID: 3570587728079380243}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3570587728079380240
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4838514076658092668}
+  m_GameObject: {fileID: 3570587728079380243}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,26 +81,27 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4838514076658092670
-BoxCollider:
+--- !u!136 &3570587728079380241
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4838514076658092668}
+  m_GameObject: {fileID: 3570587728079380243}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4838514076658092669
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &3570587728079380242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4838514076658092668}
+  m_GameObject: {fileID: 3570587728079380243}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39b9c11a4dea65349aa1e7963782e4fb, type: 3}
@@ -109,17 +110,16 @@ MonoBehaviour:
   partType: 
   partColor: 
   randomColor: 
-  specificPartType: 1
   partIsFixed: 0
   partRenderer: {fileID: 0}
   partObject: {fileID: 0}
---- !u!54 &62701530427167013
+--- !u!54 &1991109559920890755
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4838514076658092668}
+  m_GameObject: {fileID: 3570587728079380243}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
