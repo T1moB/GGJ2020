@@ -27,6 +27,7 @@ public class Parts : MonoBehaviour
     public Renderer partRenderer;
     public GameObject partObject;
     //}
+
     void Start()
     {
         

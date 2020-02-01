@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask pickupMask;
 
     private bool isHolding = false;
+    private GameObject holdedItem;
 
     private void OnDrawGizmos()
     {
@@ -42,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private void Pickup()
     {
         //if player presses action button and is not holding shit
-        if (Input.GetKeyDown(KeyCode.Q) && !isHolding)
+        if (Input.GetKeyDown(KeyCode.F) && !isHolding)
         {
             //check if object in facing direction, 
             RaycastHit hit;
@@ -54,6 +55,10 @@ public class PlayerMovement : MonoBehaviour
                 hit.transform.parent = model;
                 //and place infornt
                 hit.transform.position = pickupCheck.position;
+                holdedItem = hit.transform.gameObject;
+                Rigidbody rb = holdedItem.GetComponent<Rigidbody>();
+                rb.useGravity = false;
+                rb.constraints = RigidbodyConstraints.FreezePosition;
             }
             //isholding = false; when dropping the shit
         }
@@ -76,5 +81,18 @@ public class PlayerMovement : MonoBehaviour
         Vector3 lookDirection = new Vector3(move.x, 0, move.z);
         if (lookDirection != Vector3.zero)
             model.rotation = Quaternion.LookRotation(lookDirection * Time.deltaTime);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.name == "Workbench")
+        {
+            if (isHolding && Input.GetKeyDown(KeyCode.F))
+            {
+                WorkbenchQTE wQTE = other.gameObject.GetComponent<WorkbenchQTE>();
+                wQTE.SetCurrentGameobject(holdedItem);
+                wQTE.StartQTE();
+            }
+        }
     }
 }
