@@ -9,6 +9,7 @@ public class Parts : MonoBehaviour
     public const float ResetTime = 10f;
     public Color partColor;
     public partType myPartType;
+    public bool isPickedUp;
 
     public enum partType
     {
@@ -44,9 +45,9 @@ public class Parts : MonoBehaviour
         GetComponentInChildren<Renderer>().material.SetColor("_Color", partColor);
     }
 
-    public void TimeReset(bool player = false)
+    public void TimeReset()
     {
-        despawnTime = ResetTime * (player?2:1);
+        despawnTime = ResetTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -68,7 +69,7 @@ public class Parts : MonoBehaviour
     public void Update()
     {
         //only update when not fixed
-        if (!partIsFixed)
+        if (!partIsFixed && !isPickedUp)
         {
             despawnTime -= Time.deltaTime;
             if (despawnTime < 0)

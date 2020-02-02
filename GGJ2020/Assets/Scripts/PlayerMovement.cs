@@ -49,17 +49,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
-            Movement();
+        if (Device != null)
+        {
+            if (canMove)
+                Movement();
+            Drop();
+        }
 
+    }
+
+    private void Drop()
+    {
         if (isHolding && Device.Action3)
         {
             heldItem.transform.parent = null;
+            heldItem.GetComponent<Parts>().isPickedUp = false;
             isHolding = false;
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
-
     }
 
     private void Pickup(GameObject other)
@@ -72,8 +80,9 @@ public class PlayerMovement : MonoBehaviour
             other.transform.parent = model;
             //and place infornt
             other.transform.position = pickupCheck.position;
-            other.GetComponent<Parts>().TimeReset(true);
-            heldItem = other.transform.gameObject;
+            heldItem = other;
+            heldItem.GetComponent<Parts>().isPickedUp = true;
+            heldItem.GetComponent<Parts>().TimeReset();
             Rigidbody rb = heldItem.GetComponent<Rigidbody>();
             rb.useGravity = false;
             rb.constraints = RigidbodyConstraints.FreezePosition;
@@ -150,11 +159,6 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
             }
-        }
-
-        if(other.name == "cauldron")
-        {
-            
         }
     }
 }
