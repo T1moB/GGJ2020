@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     int scoreP1 = 0, scoreP2 = 0;
-    public TextMeshProUGUI tmp1, tmp2;
+    public ScoreTracker st1, st2;
     public int scoreThreshold = 3;
     public TextMeshProUGUI winText;
     private bool gameHasBeenWon;
@@ -13,11 +13,17 @@ public class ScoreManager : MonoBehaviour
     public void IncreaseScore(bool playerOne)
     {
         if (playerOne)
+        {
             scoreP1++;
+            st1.IterateScore(scoreP1);
+        }
         else
+        {
             scoreP2++;
+            st2.IterateScore(scoreP2);
 
-        DisplayScore();
+        }
+
         CheckForWinner();
     }
 
@@ -27,10 +33,16 @@ public class ScoreManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            IncreaseScore(false);
-        }
+
+        //if (Input.GetKeyDown(KeyCode.I))
+        //{
+        //    IncreaseScore(true);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    IncreaseScore(false);
+        //}
     }
 
     private void CheckForWinner()
@@ -56,15 +68,10 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void DisplayScore()
-    {
-        tmp1.text = "Sets completed: " + scoreP1;
-        tmp2.text = "Sets completed: " + scoreP2;
-    }
-
     public void ResetScore()
     {
         scoreP1 = scoreP2 = 0;
-        DisplayScore();
+        st1.TurnOffAllSprites();
+        st2.TurnOffAllSprites();
     }
 }
