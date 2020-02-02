@@ -6,12 +6,12 @@ public class Request : MonoBehaviour
 {
     [SerializeField]
     Parts[] requestedParts = new Parts[4];
-    
+
     private GameObject requestPartObject;
-
+    public ScoreManager sm;
     private GameObject requestCamera;
+    private int requestCompleted = 0;
 
-    //Je kan gewoon de parts nemen van de parts script
     void Start()
     {
         requestCamera = GameObject.Find("RequestCamera");
@@ -20,26 +20,15 @@ public class Request : MonoBehaviour
         //Find child parts of requested object
         requestedParts = GetComponentsInChildren<Parts>();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        IsSetCompleted();
 
-    }
-    private bool IsSetCompleted()
+    public void RequestCompleted(bool isPlayerOne)
     {
-        for (int i = 0; i < requestedParts.Length; i++)
+        requestCompleted++;
+        sm.IncreaseScore(isPlayerOne);
+        foreach (Parts p in requestedParts)
         {
-            if (requestedParts[i].partIsFixed == false)
-            {
-                return false;
-            }
+            p.generatePart();
         }
-        return true;
-    }
-
-    void RequestCompleted()
-    {
         //Reset the requested parts
     }
 
@@ -54,11 +43,11 @@ public class Request : MonoBehaviour
         return requestedParts;
     }
 
-    public bool isPartInRequest(Parts currentPart) 
+    public bool isPartInRequest(Parts currentPart)
     {
-        foreach(Parts p in requestedParts)
+        foreach (Parts p in requestedParts)
         {
-            if(currentPart.myPartType == p.myPartType && currentPart.partColor == p.partColor)
+            if (currentPart.myPartType == p.myPartType && currentPart.partColor == p.partColor)
             {
                 return true;
             }

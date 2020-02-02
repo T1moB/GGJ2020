@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3ff4e202cd0cd42b66ea989fcdfc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmp1: {fileID: 0}
-  tmp2: {fileID: 0}
-  scoreThreshold: 5
+  st1: {fileID: 0}
+  st2: {fileID: 0}
+  scoreThreshold: 3
   winText: {fileID: 0}

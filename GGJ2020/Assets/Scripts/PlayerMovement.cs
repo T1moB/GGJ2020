@@ -51,19 +51,28 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
             Movement();
+
+        if (isHolding && Device.Action3)
+        {
+            heldItem.transform.parent = null;
+            isHolding = false;
+            heldItem.GetComponent<Rigidbody>().useGravity = true;
+            heldItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        }
+
     }
 
     private void Pickup(GameObject other)
     {
         //if player presses action button and is not holding shit
-        if (Device.Action1 && !isHolding)
+        if (Device.Action1 && (!isHolding || heldItem == null))
         {
             isHolding = true;
             //then make player parent 
             other.transform.parent = model;
             //and place infornt
             other.transform.position = pickupCheck.position;
-            other.GetComponent<Parts>().TimeReset();
+            other.GetComponent<Parts>().TimeReset(true);
             heldItem = other.transform.gameObject;
             Rigidbody rb = heldItem.GetComponent<Rigidbody>();
             rb.useGravity = false;

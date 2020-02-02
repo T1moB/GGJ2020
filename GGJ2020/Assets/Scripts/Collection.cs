@@ -6,7 +6,7 @@ public class Collection : MonoBehaviour
     private Transform[] partPositions;
     private bool collected = false;
     private int itemsCollected = 0;
-
+    public bool isPlayerOne = true;
 
     void Start()
     {
@@ -44,7 +44,16 @@ public class Collection : MonoBehaviour
                 }
             }
             itemsCollected++;
-            //collected = true;
+            if(itemsCollected >= 4)
+            {
+                collected = true;
+                request.RequestCompleted(isPlayerOne);
+                foreach(Parts p in GetComponentsInChildren<Parts>())
+                {
+                    Destroy(p.gameObject);
+                }
+                itemsCollected = 0;
+            }
             return true;
         }
         return false;

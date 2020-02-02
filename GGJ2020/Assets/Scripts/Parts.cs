@@ -44,9 +44,9 @@ public class Parts : MonoBehaviour
         GetComponentInChildren<Renderer>().material.SetColor("_Color", partColor);
     }
 
-    public void TimeReset()
+    public void TimeReset(bool player = false)
     {
-        despawnTime = ResetTime;
+        despawnTime = ResetTime * (player?2:1);
     }
 
     private void OnTriggerEnter(Collider other)
