@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1650168440812924658}
   - component: {fileID: 1650168440812924659}
   - component: {fileID: 1650168440812924621}
+  - component: {fileID: 210782531}
   m_Layer: 0
   m_Name: Player Manager
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   logDebugInfo: 1
   invertYAxis: 0
   useFixedUpdate: 0
-  dontDestroyOnLoad: 1
+  dontDestroyOnLoad: 0
   suspendInBackground: 0
   enableICade: 0
   enableXInput: 0
@@ -79,3 +80,19 @@ MonoBehaviour:
   nativeInputOverrideUpdateRate: 0
   nativeInputUpdateRate: 0
   customProfiles: []
+--- !u!114 &210782531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650168440812924656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3ff4e202cd0cd42b66ea989fcdfc31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  st1: {fileID: 0}
+  st2: {fileID: 0}
+  scoreThreshold: 3
+  winText: {fileID: 0}

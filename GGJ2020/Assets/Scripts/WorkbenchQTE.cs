@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WorkbenchQTE : MonoBehaviour
@@ -55,18 +54,18 @@ public class WorkbenchQTE : MonoBehaviour
                     //fialuer
                     broken = true;
 
+                    //set audio
                     mAudio.Stop();
                     mAudio.PlayOneShot(crowd_laugh);
 
+                    //animations
                     brokenParticle.SetActive(true);
                     currentPlayer.GetComponent<PlayerMovement>().FailAnimation();
-
                     StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(false, 1));
+
+                    //wait until not broken
                     StartCoroutine(Fix());
                 }
-
-                //if (mAudio.isPlaying)
-                //    mAudio.Stop();
 
                 currentPlayer.GetComponent<PlayerMovement>().canMove = true;
                 currentGameobject = null;
@@ -79,6 +78,8 @@ public class WorkbenchQTE : MonoBehaviour
 
     public void StartQTE()
     {
+        if (broken || QTEActive) { return; }
+
         circle.SetActive(true);
         //arrow.SetActive(true);
         StartCoroutine(currentPlayer.GetComponent<PlayerMovement>().WorkAnimation(true));
