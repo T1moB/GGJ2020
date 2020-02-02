@@ -34,10 +34,10 @@ public class ScoreManager : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
-        //if (Input.GetKeyDown(KeyCode.I))
-        //{
-        //    IncreaseScore(true);
-        //}
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            IncreaseScore(true);
+        }
 
         //if (Input.GetKeyDown(KeyCode.O))
         //{
@@ -61,9 +61,9 @@ public class ScoreManager : MonoBehaviour
         {
             winText.gameObject.SetActive(true);
             if (playerOne)
-                winText.text = "Player 1 Wins!!!";
+                winText.text = "Harry Wins!!!";
             else
-                winText.text = "Player 2 Wins!!!";
+                winText.text = "Gary Wins!!!";
             gameHasBeenWon = true;
         }
     }
