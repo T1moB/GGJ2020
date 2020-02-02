@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using InControl;
+﻿using InControl;
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -64,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
             other.transform.parent = model;
             //and place infornt
             other.transform.position = pickupCheck.position;
+            other.GetComponent<Parts>().TimeReset();
             heldItem = other.transform.gameObject;
             Rigidbody rb = heldItem.GetComponent<Rigidbody>();
             rb.useGravity = false;

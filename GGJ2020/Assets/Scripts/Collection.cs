@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Collection : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class Collection : MonoBehaviour
     private bool collected = false;
     private int itemsCollected = 0;
 
-    
+
     void Start()
     {
         partPositions = GetComponentsInChildren<Transform>();
@@ -38,7 +36,7 @@ public class Collection : MonoBehaviour
 
             for (int i = 0; i < partPositions.Length; i++)
             {
-                if(partPositions[i].name == partTypePos)
+                if (partPositions[i].name == partTypePos)
                 {
                     currentPart.transform.parent = partPositions[i];
                     currentPart.transform.localPosition = Vector3.zero;

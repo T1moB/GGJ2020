@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Parts : MonoBehaviour
 {
     //public GameObject model;
     public bool partIsFixed = false;
-
+    private float despawnTime = 10f;
+    public const float ResetTime = 10f;
     public Color partColor;
     public partType myPartType;
 
@@ -15,14 +17,13 @@ public class Parts : MonoBehaviour
         upper = 2,
         top = 3
     };
-
-
+    
     void Start()
     {
         generatePart();
-
+        TimeReset();
     }
-    
+
     public void generatePart()
     {
         int randomColor = Random.Range(0, 3);
@@ -43,6 +44,11 @@ public class Parts : MonoBehaviour
         GetComponentInChildren<Renderer>().material.SetColor("_Color", partColor);
     }
 
+    public void TimeReset()
+    {
+        despawnTime = ResetTime;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Trashcan")
@@ -56,6 +62,17 @@ public class Parts : MonoBehaviour
             }
             //kill yourself
             Destroy(gameObject);
+        }
+    }
+
+    public void Update()
+    {
+        //only update when not fixed
+        if (!partIsFixed)
+        {
+            despawnTime -= Time.deltaTime;
+            if (despawnTime < 0)
+                Destroy(gameObject);
         }
     }
 
