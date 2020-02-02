@@ -11,6 +11,10 @@ public class ConveyorBelt : MonoBehaviour
 
     private void Start()
     {
+    }
+
+    public void StartSpawning()
+    {
         InvokeRepeating("Spawn", 0f, time);
     }
 
