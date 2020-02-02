@@ -178,7 +178,7 @@ MonoBehaviour:
   controller: {fileID: 245764249898012617}
   speed: 12
   gravity: 9.81
-  canMove: 1
+  canMove: 0
   model: {fileID: 1178105745}
   pickupCheck: {fileID: 1519561376}
   pickupDistance: 2

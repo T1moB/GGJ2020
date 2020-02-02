@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public InputDevice Device;
     public float speed = 12f;
     public float gravity = 9.81f;
-    public bool canMove = true;
+    public bool canMove = false;
     public Transform model;
 
     public Transform pickupCheck;

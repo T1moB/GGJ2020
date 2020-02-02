@@ -9,12 +9,12 @@ public class Request : MonoBehaviour
 
     private GameObject requestPartObject;
     public ScoreManager sm;
-    private GameObject requestCamera;
+    [SerializeField] private GameObject requestCamera;
     private int requestCompleted = 0;
 
     void Start()
     {
-        requestCamera = GameObject.Find("RequestCamera");
+        //requestCamera = GameObject.Find("RequestCamera");
         StartCoroutine(DisableRequestCamera());
 
         //Find child parts of requested object
@@ -29,6 +29,8 @@ public class Request : MonoBehaviour
         {
             p.generatePart();
         }
+        requestCamera.SetActive(true);
+        StartCoroutine(DisableRequestCamera());
         //Reset the requested parts
     }
 
